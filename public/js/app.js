@@ -13,7 +13,7 @@ class App {
         //    this.initPepper();
 
         this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        this.camera.position.set(0, 1.4, 0.9);
+        this.camera.position.set(0, 1.4, 0.5);
 
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.target = new THREE.Vector3(0, 1.4, 0);
