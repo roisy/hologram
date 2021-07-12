@@ -88,7 +88,7 @@ class Model {
     updateViseme(delta) {
 
         for (const viseme in this.visemesActive) {
-            let newvalue = this.visemes[viseme] + (this.visemesActive[viseme] - this.visemes[viseme]) * delta / this.visemevel
+            let newvalue = this.visemes[viseme] + (this.visemesActive[viseme] - this.visemes[viseme]) //* delta / this.visemevel
             this.visemes[viseme] = newvalue
             this.vrm.blendShapeProxy.setValue(THREE.VRMSchema.BlendShapePresetName[viseme], newvalue);
         }
@@ -122,7 +122,7 @@ class Model {
                 let viseme = this.visemeList[0][0]
                 let time = this.visemeList[0][1]
 
-                console.log(time, this.visemeTime)
+                console.log(time, viseme)
                 if (viseme == 0){
                     this.visemesActive.A = 0.0
                     this.visemesActive.E = 0.0
@@ -168,8 +168,14 @@ class Model {
                 }
 
                 this.visemeTime += deltaTime
-                if (this.visemeTime > time) {
+                while ((this.visemeList.length > 1) && (this.visemeTime > time)) {
                     this.visemeList.shift()
+                    viseme = this.visemeList[0][0]
+                    time = this.visemeList[0][1]
+                }
+
+                if (this.visemeTime > time) {
+                    this.visemeList.shift()       
                 } 
                 
             }else{
