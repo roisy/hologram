@@ -32,7 +32,7 @@ class Model {
 
     load() {
         this.loader.crossOrigin = 'anonymous';
-        this.loader.load('models/Rem2.vrm', (gltf) => {
+        this.loader.load('models/prueba.vrm', (gltf) => {
 
             THREE.VRMUtils.removeUnnecessaryJoints(gltf.scene);
 
