@@ -9,5 +9,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^13.1.6"
+  },
+  "dependencies": {
+    "detect-rpi": "^1.4.0"
   }
 }

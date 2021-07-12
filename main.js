@@ -1,6 +1,8 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+  
+const isPi = require('detect-rpi');
 
 function createWindow () {
   // Create the browser window.
@@ -11,6 +13,11 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+
+  if (isPi()) {
+    mainWindow.setFullScreen(true);
+    mainWindow.removeMenu();
+  }
 
   // and load the index.html of the app.
   mainWindow.loadFile('public/index.html')
